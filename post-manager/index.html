@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+        <header class="page-header">
+            <div>
+                <h1>Posts Manager</h1>
+                <p>Browse, search, sort, and add posts.</p>
+            </div>
+
+            <button id="openModalBtn" class="primary-btn">
+                + Add Post
+            </button>
+        </header>
+
+        <div class="toolbar">
+            <form id="searchForm" class="search-form">
+                <input type="search" id="searchInput"
+                       placeholder="Search by title..."
+                       aria-label="Search by title">
+
+                <button type="submit" class="primary-btn">
+                    Search
+                </button>
+            </form>
+
+            <div class="sort-container">
+                <label for="sortSelect">Sort by:</label>
+
+                <select id="sortSelect">
+                    <option value="id_asc">ID (Ascending)</option>
+                    <option value="id_desc">ID (Descending)</option>
+                    <option value="title_asc">Title (A-Z)</option>
+                    <option value="title_desc">Title (Z-A)</option>
+                </select>
+            </div>
+        </div>
+
+        <p id="statusMessage" role="status"></p>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Body</th>
+                    </tr>
+                </thead>
+
+                <tbody id="postsTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <button id="prevBtn">Previous</button>
+
+            <span id="pageInfo">Page 1</span>
+
+            <button id="nextBtn">Next</button>
+        </div>
+    </main>
+
+    <!-- Add Post Modal -->
+    <dialog id="postModal">
+        <div class="modal-header">
+            <h2>Add Post</h2>
+
+            <button id="closeModalBtn"
+                    class="close-btn"
+                    aria-label="Close">&times;</button>
+        </div>
+
+        <form id="addPostForm" novalidate>
+            <div class="form-group">
+                <label for="postTitle">Title</label>
+
+                <input type="text" id="postTitle"
+                       placeholder="Enter post title"
+                       aria-describedby="titleError">
+
+                <small id="titleError" class="error"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="postBody">Body</label>
+
+                <textarea id="postBody" rows="5"
+                          placeholder="Enter post body"
+                          aria-describedby="bodyError"></textarea>
+
+                <small id="bodyError" class="error"></small>
+            </div>
+
+            <button type="submit" id="submitPostBtn"
+                    class="primary-btn">
+                Submit Post
+            </button>
+
+            <p id="submitError" class="error" role="alert"></p>
+        </form>
+
+        <div id="postResult" class="post-result"
+             role="status" hidden>
+            <h3>Post created successfully!</h3>
+
+            <p><strong>ID:</strong> <span id="resultId"></span></p>
+            <p><strong>Title:</strong> <span id="resultTitle"></span></p>
+            <p><strong>Body:</strong> <span id="resultBody"></span></p>
+
+            <button id="doneBtn" class="primary-btn">Close</button>
+        </div>
+    </dialog>
+
+    <script src="script.js"></script>
+</body>
+</html>
