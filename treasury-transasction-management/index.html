@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasury Transaction Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+
+        <header>
+            <h1>Treasury Transaction Manager</h1>
+            <p>Search, sort, and analyze treasury transactions.</p>
+        </header>
+
+        <section class="summary">
+            <div class="summary-card">
+                <p>Total Transactions</p>
+                <h2 id="totalTransactions">0</h2>
+            </div>
+
+            <div class="summary-card">
+                <p>Total Credit</p>
+                <h2 id="totalCredit">$0</h2>
+            </div>
+
+            <div class="summary-card">
+                <p>Total Debit</p>
+                <h2 id="totalDebit">$0</h2>
+            </div>
+        </section>
+
+        <section class="panel">
+
+            <h2>Sort Transactions</h2>
+
+            <div class="controls">
+                <select id="sortAlgorithm">
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="merge">Merge Sort</option>
+                </select>
+
+                <select id="sortField">
+                    <option value="amount">Amount</option>
+                    <option value="date">Date</option>
+                    <option value="customer">Customer</option>
+                </select>
+
+                <select id="sortOrder">
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+
+                <button id="sortBtn">Sort</button>
+            </div>
+
+            <h2>Search Transactions</h2>
+
+            <div class="controls">
+                <select id="searchAlgorithm">
+                    <option value="linear">
+                        Linear Search (Customer)
+                    </option>
+                    <option value="binary">
+                        Binary Search (ID)
+                    </option>
+                </select>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Enter customer name..."
+                >
+
+                <button id="searchBtn">Search</button>
+                <button id="resetBtn" class="secondary">
+                    Reset
+                </button>
+            </div>
+
+            <p id="resultMessage" aria-live="polite"></p>
+            <p id="algorithmInfo" aria-live="polite"></p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="transactionTable"></tbody>
+                </table>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
